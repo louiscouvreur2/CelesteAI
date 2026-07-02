@@ -1,0 +1,10 @@
+numpy
+opencv-python
+torch
+torchvision
+mss
+keyboard
+Pillow
+PySide6
+matplotlib
+tensorboard

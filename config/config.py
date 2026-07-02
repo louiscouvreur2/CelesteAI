@@ -1,0 +1,12 @@
+WINDOW_NAME = "Celeste"
+
+TARGET_FPS = 60
+
+CAPTURE_WIDTH = 320
+CAPTURE_HEIGHT = 180
+
+DEVICE = "auto"
+
+AUTOSAVE_INTERVAL = 300
+
+MODEL_NAME = "model_latest.pt"
