@@ -8,3 +8,5 @@ Pillow
 PySide6
 matplotlib
 tensorboard
+pywin32
+psutil
