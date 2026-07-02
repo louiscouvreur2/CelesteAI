@@ -1,0 +1,57 @@
+CelesteAI/
+│
+├── launcher.py
+├── requirements.txt
+├── README.md
+│
+├── config/
+│   ├── settings.py
+│   ├── keys.py
+│   └── paths.py
+│
+├── core/
+│   ├── logger.py
+│   └── events.py
+│
+├── engine/
+│   ├── application.py
+│   ├── state.py
+│   └── mode.py
+│
+├── capture/
+│   ├── capture_manager.py
+│   ├── frame.py
+│   └── window.py
+│
+├── vision/
+│   ├── pipeline.py
+│   ├── resize.py
+│   ├── normalize.py
+│   └── frame_stack.py
+│
+├── input/
+│   ├── keyboard.py
+│   ├── actions.py
+│   └── controller.py
+│
+├── recorder/
+│   ├── recorder.py
+│   ├── session.py
+│   └── dataset_writer.py
+│
+├── learning/
+│   ├── dataset.py
+│   ├── model.py
+│   ├── trainer.py
+│   └── inference.py
+│
+├── gui/
+│   ├── main_window.py
+│   ├── video_widget.py
+│   ├── status_panel.py
+│   └── menu.py
+│
+├── models/
+├── recordings/
+├── saves/
+└── tests/

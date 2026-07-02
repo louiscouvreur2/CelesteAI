@@ -10,3 +10,5 @@ matplotlib
 tensorboard
 pywin32
 psutil
+pydirectinput
+PySide6
