@@ -12,3 +12,5 @@ pywin32
 psutil
 pydirectinput
 PySide6
+torch
+torchvision

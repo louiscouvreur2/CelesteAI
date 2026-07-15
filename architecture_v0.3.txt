@@ -1,0 +1,27 @@
+CelesteAI/
+
+launcher.py
+
+record.py      <-- enregistrer tes parties
+
+train.py       <-- entraîner l'IA
+
+play.py        <-- laisser l'IA jouer
+
+evaluate.py    <-- comparer plusieurs modèles
+
+gui/
+
+capture/
+
+vision/
+
+input/
+
+learning/
+
+models/
+
+recordings/
+
+config/

@@ -20,8 +20,14 @@ class CaptureManager:
 
     def start(self):
 
-        self.camera.start(target_fps=60)
+        try:
 
+            self.camera.start(target_fps=60)
+
+        except RuntimeError:
+
+            pass
+ 
     def stop(self):
 
         self.camera.stop()

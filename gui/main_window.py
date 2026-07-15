@@ -9,6 +9,9 @@ from config.settings import *
 
 from gui.status_panel import StatusPanel
 
+from gui.video_widget import VideoWidget
+from core.signals import AppSignals
+from capture.capture_thread import CaptureThread
 
 class MainWindow(QMainWindow):
 
@@ -42,7 +45,7 @@ class MainWindow(QMainWindow):
 
         layout.addLayout(left)
 
-        self.video = QLabel("Video Stream")
+        self.video = VideoWidget()
 
         self.video.setMinimumSize(960, 540)
 
@@ -53,3 +56,21 @@ class MainWindow(QMainWindow):
         """)
 
         layout.addWidget(self.video)
+
+        self.signals = AppSignals()
+
+        self.signals.frame_ready.connect(
+            self.video.update_frame
+        )
+
+        self.thread = CaptureThread(self.signals)
+
+        self.thread.start()
+
+        def closeEvent(self, event):
+
+            self.thread.stop()
+
+            self.thread.wait()
+
+            event.accept()

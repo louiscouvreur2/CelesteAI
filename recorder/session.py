@@ -1,38 +1,11 @@
-from dataclasses import dataclass
-from pathlib import Path
-import time
+from dataclasses import dataclass, field
 
 
-@dataclass(slots=True)
+@dataclass
 class RecordingSession:
 
-    id: str
+    frames: list = field(default_factory=list)
 
-    path: Path
+    actions: list = field(default_factory=list)
 
-    start_time: float
-
-    frame_count: int = 0
-
-    action_count: int = 0
-
-    @classmethod
-    def create(cls, root: Path):
-
-        session_id = time.strftime("%Y%m%d_%H%M%S")
-
-        folder = root / session_id
-
-        folder.mkdir(parents=True, exist_ok=True)
-
-        (folder / "frames").mkdir()
-
-        return cls(
-
-            id=session_id,
-
-            path=folder,
-
-            start_time=time.perf_counter(),
-
-        )
+    timestamps: list = field(default_factory=list)

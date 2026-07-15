@@ -1,33 +1,22 @@
-from pathlib import Path
+import time
 
-from capture.frame import Frame
-
-from recorder.metadata import MetadataWriter
+from recorder.dataset_writer import DatasetWriter
 from recorder.session import RecordingSession
-from recorder.writer import FrameWriter
 
 
 class Recorder:
 
     def __init__(self):
 
-        self.root = Path("recordings")
+        self.writer = DatasetWriter()
 
-        self.root.mkdir(exist_ok=True)
+        self.session = RecordingSession()
 
         self.recording = False
 
-        self.session = None
-
     def start(self):
 
-        self.session = RecordingSession.create(self.root)
-
-        self.writer = FrameWriter(
-
-            self.session.path / "frames"
-
-        )
+        self.session = RecordingSession()
 
         self.recording = True
 
@@ -35,18 +24,24 @@ class Recorder:
 
     def stop(self):
 
-        MetadataWriter().write(self.session)
-
         self.recording = False
+
+        self.writer.save(self.session)
 
         print("=== RECORD STOP ===")
 
-    def record(self, frame: Frame):
+    def add(self, frame, action):
 
         if not self.recording:
-
             return
 
-        self.writer.write(frame)
+        self.session.frames.append(frame)
+        self.session.actions.append(
+            action.to_numpy()
+        )
+        self.session.timestamps.append(time.perf_counter())
 
-        self.session.frame_count += 1
+    @property
+    def frame_count(self):
+
+        return len(self.session.frames)
